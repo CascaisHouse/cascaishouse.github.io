@@ -30,8 +30,8 @@ h2{font-size:clamp(28px,4vw,38px)}
 p{margin:0}
 .todo{background:var(--todo);color:var(--todo-fg);padding:0 .3em;border-radius:3px;font-weight:500}
 
-.hero{position:relative;max-width:1400px;margin:0 auto}
-.hero img{display:block;width:100%;height:min(72vh,640px);object-fit:cover;object-position:center 60%}
+.hero{position:relative;max-width:min(1080px, calc(80vh * 4 / 3));margin:0 auto}
+.hero img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;object-position:center 40%}
 .hero-text{padding-block:28px 8px}
 .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
 h1{font-size:clamp(40px,7vw,72px);margin-top:6px}
@@ -82,7 +82,6 @@ footer{color:var(--muted);font-size:14px;padding-block:0 40px}
 @media (max-width:720px){
   .cols,ul.list{grid-template-columns:1fr}
   .gallery{grid-template-columns:1fr 1fr}
-  .hero img{height:56vh}
 }
 @media (prefers-reduced-motion:reduce){.gallery img{transition:none}}
 img{max-width:100%}
@@ -104,8 +103,8 @@ body{margin:0}
 
   <div class="facts">
     <div class="fact wide"><b>Available</b><span>Mid-December 2026 to mid-February 2027</span></div>
-    <div class="fact"><b>Weekly</b><span>$1,250</span></div>
-    <div class="fact"><b>Monthly</b><span>$4,300</span></div>
+    <div class="fact"><b>Weekly</b><span>€1,250</span></div>
+    <div class="fact"><b>Monthly</b><span>€4,300</span></div>
     <div class="fact"><b>Bedrooms</b><span>3</span></div>
     <div class="fact"><b>Bathrooms</b><span>3</span></div>
     <div class="fact"><b>Outdoor</b><span>Private garden</span></div>
