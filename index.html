@@ -9,19 +9,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600&display=swap">
 <style>
-/* Layout: one calm column; a full-bleed photo opens the page, then facts, a photo grid, and plain sections, like a printed house brochure. */
+/* Layout: always light. A band of pale azulejo tiles frames the main photo and headline card; then facts, a photo grid, plain sections, and a seaside strip, then facts, a photo grid, and plain sections, like a printed house brochure. */
 :root{
   --bg:#f7f6f2; --surface:#ffffff; --fg:#1d2430; --muted:#5b6472; --line:#dcdad3;
   --accent:#1f4e8c; --accent-soft:#e3eaf4; --todo:#fff1c2; --todo-fg:#6b4e00;
   --display:"Gloock", Georgia, "Times New Roman", serif;
   --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#14181f; --surface:#1c222b; --fg:#ebe9e3; --muted:#a3abb7; --line:#2e3642;
-  --accent:#8fb3e6; --accent-soft:#223249; --todo:#4a3c12; --todo-fg:#ffe08a; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#14181f; --surface:#1c222b; --fg:#ebe9e3; --muted:#a3abb7; --line:#2e3642;
-  --accent:#8fb3e6; --accent-soft:#223249; --todo:#4a3c12; --todo-fg:#ffe08a; color-scheme:dark}
+:root{color-scheme:light}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -30,9 +25,12 @@ h2{font-size:clamp(28px,4vw,38px)}
 p{margin:0}
 .todo{background:var(--todo);color:var(--todo-fg);padding:0 .3em;border-radius:3px;font-weight:500}
 
-.hero{position:relative;max-width:min(1080px, calc(80vh * 4 / 3));margin:0 auto}
+.band{background:#eef3f9 url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'><rect width='88' height='88' fill='%23eef3f9'/><g fill='none' stroke='%23c3d3e9' stroke-width='2'><circle cx='44' cy='44' r='15'/><path d='M44 8 Q57 28 44 29 Q31 28 44 8Z M44 80 Q57 60 44 59 Q31 60 44 80Z M8 44 Q28 31 29 44 Q28 57 8 44Z M80 44 Q60 31 59 44 Q60 57 80 44Z'/><path d='M0 16 A16 16 0 0 0 16 0 M72 0 A16 16 0 0 0 88 16 M88 72 A16 16 0 0 0 72 88 M16 88 A16 16 0 0 0 0 72'/><path d='M0 0 L88 0 M0 0 L0 88' stroke='%23d6e1f0' stroke-width='1.5'/></g><circle cx='44' cy='44' r='4.5' fill='%23c3d3e9'/></svg>") repeat;background-size:88px 88px;padding-block:28px 32px}
+.card{max-width:min(1080px, calc(80vh * 4 / 3));margin:0 auto;background:var(--surface);box-shadow:0 1px 0 var(--line), 0 10px 30px rgba(31,78,140,.10)}
+.hero{position:relative}
 .hero img{display:block;width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;object-position:center 40%}
-.hero-text{padding-block:28px 8px}
+.hero-text{padding:28px 32px 32px}
+@media (max-width:560px){.hero-text{padding:22px 18px 24px}}
 .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
 h1{font-size:clamp(40px,7vw,72px);margin-top:6px}
 .lede{font-size:20px;color:var(--muted);max-width:40ch;margin-top:12px}
@@ -61,6 +59,10 @@ ul.list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1f
 ul.list li{padding-left:18px;position:relative}
 ul.list li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;background:var(--accent);transform:rotate(45deg)}
 
+.strip{margin:0;display:flex;flex-direction:column;gap:8px}
+.strip img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;object-position:center 30%}
+.strip figcaption{color:var(--muted);font-size:14px}
+@media (max-width:560px){.strip img{aspect-ratio:3/2}}
 .contact{background:var(--accent-soft);padding:28px;display:flex;flex-direction:column;gap:12px;margin-bottom:56px}
 .wa{display:inline-block;background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;padding:10px 18px;border-radius:4px}
 .wa:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
@@ -90,16 +92,20 @@ body{margin:0}
 </style>
 </head>
 <body>
-<header class="hero">
-  <img src="01.jpg" alt="Sunlit living room with sofa, fireplace and doors to the garden">
-</header>
-
-<main class="wrap">
+<div class="band"><div class="wrap">
+ <div class="card">
+  <header class="hero">
+    <img src="01.jpg" alt="Sunlit living room with sofa, fireplace and doors to the garden">
+  </header>
   <div class="hero-text">
     <div class="eyebrow">For rent · Cascais, Portugal</div>
     <h1>Your own house and garden in Cascais, a short walk from the beach</h1>
     <p class="lede">Fully furnished, with a private walled garden. Walk to the sea, the cafés and the train to Lisbon.</p>
   </div>
+ </div>
+</div></div>
+
+<main class="wrap">
 
   <div class="facts">
     <div class="fact wide"><b>Available</b><span>Mid-December 2026 to mid-February 2027</span></div>
@@ -145,6 +151,13 @@ body{margin:0}
         </ul>
       </div>
     </div>
+  </section>
+
+  <section aria-label="Cascais seafront">
+    <figure class="strip">
+      <img src="seaside.jpg" alt="Sunset over the bay at Cascais, with rocks in the foreground and the town along the shore" loading="lazy">
+      <figcaption>The bay at Cascais at sunset</figcaption>
+    </figure>
   </section>
 
   <section aria-labelledby="area-h">
